@@ -4,12 +4,15 @@ import Vue from 'vue'
 import App from './App'//vue会自动根据某些后缀去查找对应的文件
 import router from './router'
 import fastClick from 'fastclick'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'styles/reset.css'//引入css文件
 import 'styles/border.css'//1px边框问题
 import 'styles/iconfont.css'
+import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)
+Vue.use(VueAwesomeSwiper)
 
 /* eslint-disable no-new */
 new Vue({//vue根实例
