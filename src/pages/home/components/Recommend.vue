@@ -2,7 +2,7 @@
   <div class="recommend">
     <div class="recommend-title">热门推荐</div>
     <ul>
-    	<li class="item border-bottom" v-for="recommend in recommends" :key="recommend.id">
+    	<li class="item border-bottom" v-for="recommend in list" :key="recommend.id">
   			<img class="item-img" :src="recommend.imgUrl"/>
     		<div class="item-info">
     			<p class="item-title">{{recommend.title}}</p>
@@ -16,28 +16,9 @@
 
 <script>
   export default {
+  	props: ['list'],
     data () {
       return {
-      	recommends: [
-      		{
-      			id: '0001',
-      			imgUrl: 'http://img1.qunarzz.com/sight/p0/1609/7a/7ae8ee7831836095a3.water.jpg_200x200_36727f69.jpg',
-      			title: 'sajdhlasdkalds',
-      			desc: 'sdlaksjdk'
-      		},
-      		{
-      			id: '0002',
-      			imgUrl: 'http://img1.qunarzz.com/sight/p0/1609/7a/7ae8ee7831836095a3.water.jpg_200x200_36727f69.jpg',
-      			title: 'mmmmmmmmmmmmmm',
-      			desc: 'ppppppppp'
-      		},
-      		{
-      			id: '0003',
-      			imgUrl: 'http://img1.qunarzz.com/sight/p0/1609/7a/7ae8ee7831836095a3.water.jpg_200x200_36727f69.jpg',
-      			title: 'pppppppppppppppppp',
-      			desc: 'ooooooooo'
-      		}
-      	]
       }
     }
   }
