@@ -14,6 +14,7 @@
   import Icons from './components/Icons.vue';
   import Recommend from './components/Recommend.vue';
   import Weekend from './components/Weekend';
+  import { mapState } from 'vuex'
 
   //静态文件放到static目录下才可以被访问
 
@@ -22,6 +23,7 @@
   export default {
   	data () {
   	  return {
+        lastCity: '',
         swiperList: [],
         iconList: [],
         recommendList: [],
@@ -29,11 +31,17 @@
   	  }
   	},
     mounted () {
-      this.getHomeInfo();
+      this.lastCity = this.city
+      this.getHomeInfo()
+    },
+    computed: {
+      ...mapState(['city'])
     },
   	methods: {
       getHomeInfo () {
-        axios.get('/static/mock/home.json').then(this.getHomeInfoSucc);
+        //axios.get('/static/mock/home.json').then(this.getHomeInfoSucc);
+        //发送ajax请求时，需要获取城市信息，从vuex的state中读取当前城市信息
+        axios.get('/static/mock/home.json?city=' + this.city).then(this.getHomeInfoSucc)
       },
       getHomeInfoSucc (res) { 
         res = res.data;
@@ -47,6 +55,13 @@
         }
       }
   	},
+    activated () {
+      //activated:判断当前的城市信息是否发生变化，在页面重新显示的时候，activated会被重新执行
+      if(this.lastCity !== this.city) {
+        this.lastCity = this.city
+        this.getHomeInfo()
+      }
+    },
   	components: {
   	  'home-header': Header,
       'home-swiper': Swiper,

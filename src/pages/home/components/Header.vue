@@ -9,7 +9,8 @@
     </div>
     <router-link to="/city">
       <div class="header-right">     
-        北京
+        <!--{{this.$store.state.city}}-->
+        {{this.city}}
         <span class="iconfont arrow-icon">&#xe64a;</span>     
       </div>
     </router-link>
@@ -17,11 +18,16 @@
 </template>
 
 <script>
+  //vuex中mapState的使用
+  import { mapState } from 'vuex'
   export default {
     data () {
       return {
 
       }
+    },
+    computed: {
+      ...mapState(['city'])//将vuex中的state中的属性映射到computed中，将state中的city映射到computed中的city
     },
     methods: {
 
@@ -44,12 +50,13 @@
         text-align: center
         font-size: .4rem
     .header-right
-      width: 1.24rem
+      min-width: 1.04rem
       float: right
       text-align: center
       color: #fff
+      padding: 0 .15rem
       .arrow-icon
-        margin-left: -0.04rem
+        margin-left: 0rem
         font-size: .24rem
     .header-input
       flex: 1
