@@ -19,7 +19,6 @@
   //静态文件放到static目录下才可以被访问
 
   import axios from 'axios';
-  console.log(axios);
   export default {
   	data () {
   	  return {
@@ -41,11 +40,11 @@
       getHomeInfo () {
         //axios.get('/static/mock/home.json').then(this.getHomeInfoSucc);
         //发送ajax请求时，需要获取城市信息，从vuex的state中读取当前城市信息
-        axios.get('/static/mock/home.json?city=' + this.city).then(this.getHomeInfoSucc)
+        axios.get('/api/home.json?city=' + this.city).then(this.getHomeInfoSucc)
       },
       getHomeInfoSucc (res) { 
         res = res.data;
-        console.log(res);
+        //console.log(res);
         if(res.ret && res.data){ //如果后端正确返回了数据，且data存在的话，就可以      
           var data = res.data;
           this.swiperList = data.swiperList;

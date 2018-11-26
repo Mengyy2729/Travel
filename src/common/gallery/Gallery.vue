@@ -2,8 +2,8 @@
 	<div class="container" @click="handleGalleryClick">
 		<div class="wrapper">
 			<swiper :options="swiperOption">
-		      <swiper-slide>
-		  	  	  <img class="gallery-img" src=""/>
+		      <swiper-slide v-for="(img,idx) in imgs" :key="idx">
+		  	  	  <img class="gallery-img" :src="img"/>
 		  	  </swiper-slide>
 		  	  <div class="swiper-pagination" slot="pagination"></div>
 		  	</swiper>
@@ -13,6 +13,7 @@
 
 <script>
 	export default {
+		props: ['imgs'],
 		data () {
 			return {
 				swiperOption: {

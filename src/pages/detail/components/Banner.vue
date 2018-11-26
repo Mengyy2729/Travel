@@ -1,29 +1,34 @@
 <template>
 	<div>
 		<div class="banner" @click="handleBannerClick">
-			<img class="banner-img" src=""/>
+			<img class="banner-img" :src="bannerImg"/>
 			<div class="banner-info">
-				<div class="banner-title">海洋世界</div>
+				<div class="banner-title">{{sightName}}</div>
 				<div class="banner-number">
 					<span class="iconfont banner-icon">&#xe719;</span>
 					39
 				</div>
 			</div>
 		</div>
-		<detail-gallery v-show="isShow" @close="closeGallery"></detail-gallery>
+		<fade-ani>
+			<detail-gallery v-show="isShow" @close="closeGallery" :imgs="gallaryImgs"></detail-gallery>
+		</fade-ani>
 	</div>
 </template>
 
 <script>
 	import Gallery from 'common/gallery/Gallery.vue'
+	import FadeAni from 'common/fade/Fade.vue'
 	export default {
+		props: ['bannerImg', 'sightName', 'gallaryImgs'],
 		data () {
 			return {
 				isShow: false
 			}
 		},
 		components: {
-			'detail-gallery': Gallery
+			'detail-gallery': Gallery,
+			'fade-ani': FadeAni
 		},
 		methods: {
 			handleBannerClick () {
@@ -40,6 +45,7 @@
 	.banner
 		overflow: hidden
 		position: relative
+		z-index: 2
 		padding-bottom: 55%
 		height: 0
 		background: #ddd

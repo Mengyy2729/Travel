@@ -33,7 +33,7 @@
 		},
 		methods: {
 			getCityInfo () {
-				axios.get('/static/mock/city.json').then(this.handleCityInfo);
+				axios.get('/api/city.json').then(this.handleCityInfo);
 			},
 			handleCityInfo (res) {
 				res = res.data;

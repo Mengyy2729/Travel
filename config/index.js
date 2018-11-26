@@ -10,10 +10,12 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
+    proxyTable: {//在开发环境下，如果访问亲求路径，会将路径请求到本地地址上
         "/api": {
             'target': 'http://localhost:8080',
-            '^/api': '/static/mock'
+            pathRewrite: {
+                '^/api': '/static/mock'//映射的是后端服务器上的数据
+            }
         }
     },
 

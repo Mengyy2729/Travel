@@ -49,6 +49,7 @@
 	@import "~styles/varibles.styl"
 	.header-abs
 		position: absolute
+		z-index: 3
 		left: .2rem
 		top: .2rem
 		width: .8rem
@@ -62,6 +63,7 @@
 			font-size: .4rem
 	.header-fixed
 		position: fixed
+		z-index: 10
 		left: 0
 		top: 0
 		right: 0
